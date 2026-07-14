@@ -1,15 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>給付收費 - 愛馨居家護理所</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-bg-hover: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-main: #1d1d1f;
+            --text-sub: #515154;
+            --accent-blue: #0071e3;
+            --accent-green: #34c759;
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.06);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d2e3fc 0%, #e8eaed 35%, #fad2e1 70%, #e2f0d9 100%);
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", "Microsoft JhengHei", sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 120px 20px 80px 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 電腦版導覽列 */
+        .nav-desktop {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 24px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-desktop .brand {
+            font-weight: 800;
+            color: var(--text-main);
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-desktop a.nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-desktop a.nav-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: var(--accent-blue);
+        }
+
+        .nav-desktop a.nav-link.active {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* 手機版導覽列 */
+        .nav-mobile {
+            display: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--glass-bg-hover);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(52, 199, 89, 0.12);
+            color: #248a3d;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(52, 199, 89, 0.2);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #111112 30%, #444446 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 750;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 22px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+        }
+
+        p.intro-text {
+            font-size: 1.1rem;
+            color: #2f2f31;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* 表格設計 */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-soft);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 16px 20px;
+            font-weight: 600;
+            color: var(--text-main);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-sub);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 16px 100px 16px;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .glass-card {
+                padding: 24px;
+            }
+            .nav-desktop {
+                display: none;
+            }
+            .nav-mobile {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(255, 255, 255, 0.35);
+                justify-content: space-around;
+                padding: 10px 0 calc(10px + env(safe-area-inset-bottom)) 0;
+                box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.03);
+            }
+            .nav-mobile a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-sub);
+                font-size: 0.75rem;
+                font-weight: 600;
+                flex: 1;
+                transition: all 0.2s ease;
+            }
+            .nav-mobile a .nav-icon {
+                font-size: 1.4rem;
+                margin-bottom: 2px;
+            }
+            .nav-mobile a:hover, .nav-mobile a.active {
+                color: var(--accent-blue);
+            }
+        }
+    </style>
+</head>
 <body>
+
+    <nav class="nav-desktop">
+        <a href="index.html" class="brand">愛馨居家護理</a>
+        <a href="index.html" class="nav-link">首頁</a>
+        <a href="about.html" class="nav-link">關於我們</a>
+        <a href="services.html" class="nav-link">專業服務</a>
+        <a href="pricing.html" class="nav-link active">給付收費</a>
+        <a href="contact.html" class="nav-link">聯絡我們</a>
+    </nav>
+
+    <nav class="nav-mobile">
+        <a href="index.html">
+            <span class="nav-icon">🏠</span>
+            <span>首頁</span>
+        </a>
+        <a href="about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span>關於</span>
+        </a>
+        <a href="services.html">
+            <span class="nav-icon">🩺</span>
+            <span>服務</span>
+        </a>
+        <a href="pricing.html" class="active">
+            <span class="nav-icon">💰</span>
+            <span>收費</span>
+        </a>
+        <a href="contact.html">
+            <span class="nav-icon">📞</span>
+            <span>聯絡</span>
+        </a>
+    </nav>
+
     <div class="container">
         <header>
             <span class="badge">政府核定標準 • 清晰透明</span>
             <h1>給付管道與收費標準</h1>
-            <p>提供公費申報軌道與高規格自費特護，所有收費均報請衛生局核定執行</p>
+            <p>提供公費申報軌道與高規格自費特護，所有收費均報請衛生局核定執行[cite: 2, 4]</p>
         </header>
 
+        <!-- 收費管道詳細介紹 -->
         <section class="glass-card">
             <h2>多元化的收費與給付管道</h2>
             <p class="intro-text">
-                為滿足不同個案的需求，我們支援「公費長照給付」、「全民健保整合計畫」與「特約機構自費」等多種支付管道：
+                為滿足不同個案的需求，我們支援「公費長照給付」、「全民健保整合計畫」與「特約機構自費」等多種支付管道[cite: 2, 4]：
             </p>
             <div class="table-container">
                 <table>
@@ -24,34 +328,47 @@
                         <tr>
                             <td><strong>長照 2.0 公費給付</strong></td>
                             <td>核心護理 (CA07) / 專業服務 (G碼) / 技術操作 (C碼)</td>
-                            <td>符合長照 2~8 級核定額度者，依政府公告比例收取部分負擔：一般戶自付 16%、中低戶自付 5%、低收入戶全額公費免自付。</td>
+                            <td>符合長照 2~8 級核定額度者，依政府公告比例收取部分負擔：一般戶自付 16%、中低戶自付 5%、低收入戶全額公費免自付[cite: 2, 4]。</td>
                         </tr>
                         <tr>
                             <td><strong>健保居家醫療</strong></td>
                             <td>全民健康保險居家醫療照護整合計畫</td>
-                            <td>符合健保收案要件者，依中央健康保險署公告部分負擔比例收取（自付 5%，符合免部分負擔資格者免收），醫師與護理師訪視交通費另計。</td>
+                            <td>符合健保收案要件者，依中央健康保險署公告部分負擔比例收取（自付 5%，符合免部分負擔資格者免收），醫師與護理師訪視交通費另計[cite: 2, 4]。</td>
                         </tr>
                         <tr>
                             <td><strong>機構自費項目</strong></td>
                             <td>高階個別化吞嚥功能復能訓練 (ST)</td>
-                            <td>每案次 <strong>新台幣 2,000 元整</strong>（不含耗材與交通費）。由特約專業語言治療師執行一對一到府訓練。</td>
+                            <td>每案次 <strong>新台幣 2,000 元整</strong>（不含耗材與交通費）。由特約專業語言治療師執行一對一到府訓練[cite: 2, 4]。</td>
                         </tr>
                         <tr>
                             <td><strong>機構自費項目</strong></td>
                             <td>專案失能飲食質地與營養菜單規劃</td>
-                            <td>每案次 <strong>新台幣 1,500 元整</strong>。由特約專業營養師執行到府備餐與營養菜單評估指導。</td>
+                            <td>每案次 <strong>新台幣 1,500 元整</strong>。由特約專業營養師執行到府備餐與營養菜單評估指導[cite: 2, 4]。</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
+        <!-- 法規須知 -->
         <section class="glass-card">
             <h2>收費須知與合規條款</h2>
             <p class="intro-text">
-                1. <strong>部分負擔收取方式：</strong>不論是公費或自費項目，本所將於按月提供繳費通知單後，於翌月十日前向案家收取。<br>
-                2. <strong>侵入性護理限制：</strong>依據醫政法規，若個案未能提供有效之「居家護理醫囑單」（醫囑效期一般為 2~3 個月），本所得依法暫停提供涉及侵入性護理技術操作，直至重新評估開立。
+                1. <strong>部分負擔收取方式：</strong>不論是公費或自費項目，本所將於按月提供繳費通知單後，於翌月十日前向案家收取[cite: 2, 4]。<br>
+                2. <strong>侵入性護理限制：</strong>依據醫政法規，若個案未能提供有效之「居家護理醫囑單」（醫囑效期一般為 2~3 個月），本所得依法暫停提供涉及侵入性護理技術操作，直至重新評估開立[cite: 2, 4]。
             </p>
         </section>
     </div>
+
+    <footer>
+        <p><strong>愛馨居家護理所</strong></p>
+        <p>📍 機構地址：新北市新店區中央路 173-2 號 1 樓[cite: 1, 2, 3, 4]</p>
+        <p>💼 負責人：負責護理長 | 預定開業時間：2026 年 8 月[cite: 1]</p>
+        <div class="footer-meta">
+            <p>© 2026 愛馨居家護理所. All Rights Reserved. 醫療機構核准字號申請中。</p>
+            <p>本站採用 macOS Glassmorphism 沉浸式無邊框設計，用心守護，溫馨相伴。</p>
+        </div>
+    </footer>
+
 </body>
+</html>
