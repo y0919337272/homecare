@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>愛馨居家護理所 - 專業居家照護與吞嚥復能團隊</title>
+    <title>首頁 - 愛馨居家護理所</title>
     <style>
+        /* 共用 iOS / macOS 沉浸式毛玻璃變數 */
         :root {
             --glass-bg: rgba(255, 255, 255, 0.45);
             --glass-bg-hover: rgba(255, 255, 255, 0.6);
@@ -26,13 +27,12 @@
         }
 
         body {
-            /* 沉浸式 Apple-style Sonoma 流體漸層背景 */
             background: linear-gradient(135deg, #d2e3fc 0%, #e8eaed 35%, #fad2e1 70%, #e2f0d9 100%);
             background-attachment: fixed;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", "Microsoft JhengHei", sans-serif;
             color: var(--text-main);
             line-height: 1.6;
-            padding: 80px 20px;
+            padding: 120px 20px 80px 20px; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,14 +40,83 @@
             overflow-x: hidden;
         }
 
-        /* 自然流暢的無邊框容器 */
         .container {
             width: 100%;
             max-width: 900px;
-            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* 網頁標頭 */
+        /* 1. 電腦版 - 頂部中間「懸浮島」導覽列 */
+        .nav-desktop {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 24px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-desktop .brand {
+            font-weight: 800;
+            color: var(--text-main);
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-desktop a.nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-desktop a.nav-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: var(--accent-blue);
+        }
+
+        .nav-desktop a.nav-link.active {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* 2. 手機版 - 底部固定導覽列 (預設隱藏) */
+        .nav-mobile {
+            display: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--glass-bg-hover);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
         header {
             text-align: center;
             margin-bottom: 50px;
@@ -85,25 +154,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 懸浮毛玻璃卡片 */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-card);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.4s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-4px);
-            background-color: var(--glass-bg-hover);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
-        }
-
         h2 {
             font-size: 1.6rem;
             font-weight: 750;
@@ -128,10 +178,8 @@
             color: #2f2f31;
             margin-bottom: 20px;
             text-align: justify;
-            font-weight: 400;
         }
 
-        /* 三欄網格佈局 */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -171,61 +219,8 @@
             font-size: 0.95rem;
             color: var(--text-sub);
             text-align: justify;
-            line-height: 1.6;
         }
 
-        /* 帶有毛玻璃效果的表格 */
-        .table-container {
-            overflow-x: auto;
-            margin-top: 20px;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: var(--shadow-soft);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.95rem;
-        }
-
-        th {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 16px 20px;
-            font-weight: 600;
-            color: var(--text-main);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        td {
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--text-sub);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* 行動呼籲卡片 */
-        .cta-card {
-            text-align: center;
-            background: rgba(0, 113, 227, 0.05);
-            border: 1px solid rgba(0, 113, 227, 0.2);
-        }
-
-        .cta-card h2 {
-            justify-content: center;
-            color: var(--accent-blue);
-        }
-        
-        .cta-card h2::before {
-            display: none;
-        }
-
-        /* 按鈕設計 */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -272,7 +267,6 @@
             box-shadow: var(--shadow-soft);
         }
 
-        /* 頁尾 */
         footer {
             margin-top: 60px;
             padding: 40px 20px;
@@ -294,22 +288,14 @@
             margin-top: 15px;
         }
 
-        /* 漸變出場動畫 */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 行動裝置響應式優化 */
         @media (max-width: 768px) {
             body {
-                padding: 50px 16px;
+                padding: 40px 16px 100px 16px;
             }
             header h1 {
                 font-size: 2.2rem;
@@ -317,6 +303,48 @@
             .glass-card {
                 padding: 24px;
             }
+            .nav-desktop {
+                display: none;
+            }
+            
+            /* 手機版 Navbar (固定底部) */
+            .nav-mobile {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(255, 255, 255, 0.35);
+                justify-content: space-around;
+                padding: 10px 0 calc(10px + env(safe-area-inset-bottom)) 0;
+                box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.03);
+            }
+
+            .nav-mobile a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-sub);
+                font-size: 0.75rem;
+                font-weight: 600;
+                flex: 1;
+                transition: all 0.2s ease;
+            }
+
+            .nav-mobile a .nav-icon {
+                font-size: 1.4rem;
+                margin-bottom: 2px;
+            }
+
+            .nav-mobile a:hover, .nav-mobile a.active {
+                color: var(--accent-blue);
+            }
+            
             .btn-group {
                 flex-direction: column;
                 align-items: stretch;
@@ -330,118 +358,102 @@
 </head>
 <body>
 
-    <!-- 沉浸式流動容器 -->
+    <nav class="nav-desktop">
+        <a href="index.html" class="brand">愛馨居家護理</a>
+        <a href="index.html" class="nav-link active">首頁</a>
+        <a href="about.html" class="nav-link">關於我們</a>
+        <a href="services.html" class="nav-link">專業服務</a>
+        <a href="pricing.html" class="nav-link">給付收費</a>
+        <a href="contact.html" class="nav-link">聯絡我們</a>
+    </nav>
+
+    <nav class="nav-mobile">
+        <a href="index.html" class="active">
+            <span class="nav-icon">🏠</span>
+            <span>首頁</span>
+        </a>
+        <a href="about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span>關於</span>
+        </a>
+        <a href="services.html">
+            <span class="nav-icon">🩺</span>
+            <span>服務</span>
+        </a>
+        <a href="pricing.html">
+            <span class="nav-icon">💰</span>
+            <span>收費</span>
+        </a>
+        <a href="contact.html">
+            <span class="nav-icon">📞</span>
+            <span>聯絡</span>
+        </a>
+    </nav>
+
     <div class="container">
         
-        <!-- 標頭 -->
         <header>
             <span class="badge">新北市政府衛生局核准設立醫事機構</span>
             <h1>愛馨居家護理所</h1>
-            <p>以人為中心 • 全人照護 • 跨專業合作</p>
+            <p>用心守護，溫馨相伴 —— 專業居家語言治療與吞嚥復能</p>
         </header>
 
-        <!-- 關於我們 卡片 -->
         <section class="glass-card">
-            <h2>關於愛馨</h2>
+            <h2>溫馨與專業的居家守護</h2>
             <p class="intro-text">
-                「愛馨居家護理所」落腳於新店，秉持著專業、關懷與尊嚴的核心價值，深入社區與家戶，實踐在地安老與全人照護的溫馨願景。我們積極與鄰近評鑑合格醫療院所簽訂雙向轉介契約，並建立 24 小時電話諮詢與緊急後送機制，為失能與出院個案建構安全、無縫接軌的醫療照護防護網。
+                「愛馨居家護理所」落腳於新店，深耕社區。我們深知吞嚥與溝通是維持生命尊嚴的關鍵。我們擁有一支結合「高階居家護理」、「語言治療」與「飲食營養」的黃金跨專業團隊，親自走入個案家中，提供最貼心、最科學的客製化復能照護。
             </p>
+            <div class="btn-group" style="justify-content: flex-start; margin-top: 20px;">
+                <a href="about.html" class="btn btn-primary">了解護理所理念 →</a>
+                <a href="services.html" class="btn btn-secondary">查看我們的服務</a>
+            </div>
         </section>
 
-        <!-- 專業特色 卡片 -->
         <section class="glass-card">
-            <h2>專業服務黃金三角</h2>
+            <h2>專業黃金三角特色</h2>
             <p class="intro-text">
-                我們結合「核心居家護理」、「語言治療吞嚥復能」與「營養膳食規劃」三大領域，打造全方位的專業跨團隊協作服務：
+                我們提供與傳統居家護理截然不同的整合照護，以協助移除管路、恢復由口進食為團隊最高核心目標：
             </p>
             <div class="grid-3">
                 <div class="feature-box">
                     <span class="feature-icon">🩺</span>
                     <h3>核心居家護理</h3>
-                    <p>提供專業留置管路更換（鼻胃管、導尿管、氣切管等三管技術）、複雜壓瘡與各類傷口護理指導、生理狀況監測（長照 CA07 項目），並提供照顧者護理與諮詢指導。</p>
+                    <p>留置醫療管路更換（鼻胃管、尿管、氣切管）、壓瘡與複雜傷口照護、生理監測與家屬照護諮詢。</p>
                 </div>
                 <div class="feature-box">
                     <span class="feature-icon">🗣️</span>
                     <h3>高階吞嚥復能 (ST)</h3>
-                    <p>由特約/專任語言治療師到府執行一對一臨床口肌與吞嚥訓練，<strong>主打協助個案逐步恢復由口進食，並科學評估與移除鼻胃管</strong>，重建個案的生活尊嚴與樂趣。</p>
+                    <p>特約語言治療師到府執行一對一吞嚥功能訓練，主打協助個案訓練口肌，逐步安全移除鼻胃管。</p>
                 </div>
                 <div class="feature-box">
                     <span class="feature-icon">🥗</span>
-                    <h3>失能飲食與營養規劃</h3>
-                    <p>特約專業營養師到府一對一指導，評估個案營養與壓傷風險，針對失能個案客製化調整食物質地（如糊食、軟食分級）並規劃專案營養菜單。</p>
+                    <h3>失能飲食質地規劃</h3>
+                    <p>特約營養師到府指導，評估營養與壓傷風險，針對個案客製化調整食物並規劃專屬膳食。</p>
                 </div>
             </div>
         </section>
 
-        <!-- 給付與收費 卡片 -->
-        <section class="glass-card">
-            <h2>給付管道與收費標準</h2>
-            <p class="intro-text">
-                我們的收費標準均嚴格遵循衛生福利部及新北市政府衛生局核定標準：
+        <section class="glass-card" style="background: rgba(0, 113, 227, 0.05); border-color: rgba(0, 113, 227, 0.15);">
+            <h2 style="color: var(--accent-blue);">安心雙向轉介機制</h2>
+            <p class="intro-text" style="color: var(--text-main);">
+                依據《護理人員法》規範，我們已與鄰近評鑑合格之醫療院所簽訂「轉介關係契約」，並建立 24 小時電話諮詢與緊急醫療後送流程。不論是「出院銜接照護」或「社區緊急後送」，我們皆提供安全無縫的整合性社區醫療照護網絡。
             </p>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>收費類別</th>
-                            <th>給付項目</th>
-                            <th>費用說明</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>長照 2.0 公費給付</strong></td>
-                            <td>CA07 核心護理 / C碼技術 / G碼專業服務</td>
-                            <td>依政府公告之部分負擔比例（一般戶 16%、中低戶 5%、免部分負擔 0%）</td>
-                        </tr>
-                        <tr>
-                            <td><strong>健保居家醫療</strong></td>
-                            <td>全民健康保險居家醫療照護整合計畫</td>
-                            <td>依健保署公告之居家護理部分負擔比例（通常自付 5%）收取，訪視交通費另計</td>
-                        </tr>
-                        <tr>
-                            <td><strong>機構自費特護</strong></td>
-                            <td>高階個別化吞嚥功能復能訓練 (ST)</td>
-                            <td>每案次 NT$ 2,000 元（不含耗材與交通費），由專業語言治療師執行</td>
-                        </tr>
-                        <tr>
-                            <td><strong>機構自費特護</strong></td>
-                            <td>專案失能飲食質地與營養菜單規劃</td>
-                            <td>每案次 NT$ 1,500 元，由專業營養師到府一對一指導</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="btn-group" style="justify-content: flex-start; margin-top: 15px;">
+                <a href="contact.html" class="btn btn-primary">立即預約評估</a>
             </div>
         </section>
-
-        <!-- 管理與行動呼籲 卡片 -->
-        <section class="glass-card cta-card">
-            <h2>護理所管理系統與設備維護</h2>
-            <p style="margin-bottom: 25px; color: var(--text-sub); font-size: 1.05rem;">
-                為確保居家醫事與復健服務的安全性，本所定期對所有醫療及復健儀器設備進行功能檢測、校正與安全維護：
-            </p>
-            <div class="btn-group">
-                <a href="devicereport.html" class="btn btn-primary">
-                    <span>📊</span> 查看醫療儀器與設備安全管理報告
-                </a>
-                <a href="#contact" class="btn btn-secondary" onclick="alert('聯絡電話：02-2218-XXXX (籌備處)\n歡迎於服務時間致電洽詢！')">
-                    <span>📞</span> 立即諮詢服務
-                </a>
-            </div>
-        </section>
-
-        <!-- 頁尾 -->
-        <footer>
-            <p><strong>愛馨居家護理所</strong></p>
-            <p>📍 機構地址：新北市新店區中央路 173-2 號 1 樓</p>
-            <p>💼 負責人：余易旂 所長 | 預定開業時間：2026 年 8 月</p>
-            <div class="footer-meta">
-                <p>© 2026 愛馨居家護理所. All Rights Reserved. 醫療機構核准字號申請中。</p>
-                <p>本站採用 macOS Glassmorphism 設計，用心守護，溫馨相伴。</p>
-            </div>
-        </footer>
 
     </div>
+
+    <footer>
+        <p><strong>愛馨居家護理所</strong></p>
+        <p>📍 機構地址：新北市新店區中央路 173-2 號 1 樓</p>
+        <p>💼 負責人：余易旂 所長 | 預定開業時間：2026 年 8 月</p>
+        <div class="footer-meta">
+            <p>© 2026 愛馨居家護理所. All Rights Reserved. 醫療機構核准字號申請中。</p>
+            <p>本站採用 macOS Glassmorphism 沉浸式無邊框設計，用心守護，溫馨相伴。</p>
+        </div>
+    </footer>
 
 </body>
 </html>
