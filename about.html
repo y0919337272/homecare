@@ -1,4 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 - 愛馨居家護理所</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-bg-hover: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-main: #1d1d1f;
+            --text-sub: #515154;
+            --accent-blue: #0071e3;
+            --accent-green: #34c759;
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.06);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d2e3fc 0%, #e8eaed 35%, #fad2e1 70%, #e2f0d9 100%);
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", "Microsoft JhengHei", sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 120px 20px 80px 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 電腦版導覽列 */
+        .nav-desktop {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 24px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-desktop .brand {
+            font-weight: 800;
+            color: var(--text-main);
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-desktop a.nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-desktop a.nav-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: var(--accent-blue);
+        }
+
+        .nav-desktop a.nav-link.active {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* 手機版導覽列 */
+        .nav-mobile {
+            display: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--glass-bg-hover);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(52, 199, 89, 0.12);
+            color: #248a3d;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(52, 199, 89, 0.2);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #111112 30%, #444446 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 750;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 22px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+        }
+
+        p.intro-text {
+            font-size: 1.1rem;
+            color: #2f2f31;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 16px 100px 16px;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .glass-card {
+                padding: 24px;
+            }
+            .nav-desktop {
+                display: none;
+            }
+            .nav-mobile {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(255, 255, 255, 0.35);
+                justify-content: space-around;
+                padding: 10px 0 calc(10px + env(safe-area-inset-bottom)) 0;
+                box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.03);
+            }
+            .nav-mobile a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-sub);
+                font-size: 0.75rem;
+                font-weight: 600;
+                flex: 1;
+                transition: all 0.2s ease;
+            }
+            .nav-mobile a .nav-icon {
+                font-size: 1.4rem;
+                margin-bottom: 2px;
+            }
+            .nav-mobile a:hover, .nav-mobile a.active {
+                color: var(--accent-blue);
+            }
+        }
+    </style>
+</head>
 <body>
+
     <nav class="nav-desktop">
         <a href="index.html" class="brand">愛馨居家護理</a>
         <a href="index.html" class="nav-link">首頁</a>
@@ -7,12 +243,35 @@
         <a href="pricing.html" class="nav-link">給付收費</a>
         <a href="contact.html" class="nav-link">聯絡我們</a>
     </nav>
-    
+
+    <nav class="nav-mobile">
+        <a href="index.html">
+            <span class="nav-icon">🏠</span>
+            <span>首頁</span>
+        </a>
+        <a href="about.html" class="active">
+            <span class="nav-icon">ℹ️</span>
+            <span>關於</span>
+        </a>
+        <a href="services.html">
+            <span class="nav-icon">🩺</span>
+            <span>服務</span>
+        </a>
+        <a href="pricing.html">
+            <span class="nav-icon">💰</span>
+            <span>收費</span>
+        </a>
+        <a href="contact.html">
+            <span class="nav-icon">📞</span>
+            <span>聯絡</span>
+        </a>
+    </nav>
+
     <div class="container">
         <header>
             <span class="badge">用心守護 • 在地安老</span>
             <h1>關於愛馨</h1>
-            <p>提供有尊嚴、具溫度的居家護理與復能整合照護</p>
+            <p>提供有尊嚴、具溫度的居家護理與復能整合照護[cite: 1, 2, 3, 4]</p>
         </header>
 
         <section class="glass-card">
@@ -21,22 +280,22 @@
                 「愛馨居家護理所」致力於實踐全人照護與在地老化的願景。我們深知許多罹患慢性病、中風、腦傷或失智症的長輩，面臨著漫長的管路留置以及「無法說話、無法由口進食」的痛苦。
             </p>
             <p class="intro-text">
-                我們不只提供例行性的更換管路，更透過「護理、語言治療與營養」的跨專業深度協作，讓醫療與長照服務無縫接軌，協助長輩重建吞嚥功能、安全進食，重新感受美味的喜悅，找回生命的尊嚴。
+                我們不只提供例行性的更換管路，更透過「護理、語言治療與營養」的跨專業深度協作，讓醫療與長照服務無縫接軌，協助長輩重建吞嚥功能、安全進食，重新感受美味的喜悅，找回生命的尊嚴[cite: 2, 4]。
             </p>
         </section>
 
         <section class="glass-card">
             <h2>法定規範與合規聲明</h2>
             <p class="intro-text">
-                本所為經主管機關新北市政府衛生局核准設立之合法醫療護理機構。
+                本所為經主管機關新北市政府衛生局核准設立之合法醫療護理機構[cite: 1, 2, 3, 4]。
             </p>
             <p class="intro-text">
                 <strong>《合規要件與醫療合作》：</strong><br>
-                依據《護理人員法》第二十條規定，本所已與鄰近合法醫療院所簽署轉介合作契約，確保個案在居家照護期間發生病情急速變化或管路阻塞等緊急事件時，擁有 24 小時暢通的緊急醫療後送就醫機制。
+                依據《護理人員法》第二十條規定，本所已與鄰近合法醫療院所簽署轉介合作契約，確保個案在居家照護期間發生病情急速變化或管路阻塞等緊急事件時，擁有 24 小時暢通的緊急醫療後送就醫機制[cite: 1, 3, 4]。
             </p>
             <p class="intro-text">
                 <strong>《人員專業登錄》：</strong><br>
-                本所派屬執行業務之居家護理師、特約語言治療師（ST）與營養師，均依法取得中華民國醫事人員專業證書，並依法辦理執業登記或支援報備手續，所有技術操作嚴格遵循醫師開立之「居家護理醫囑單」執行。
+                本所派屬執行業務之居家護理師、特約語言治療師（ST）與營養師，均依法取得中華民國醫事人員專業證書，並依法辦理執業登記或支援報備手續，所有技術操作嚴格遵循醫師開立之「居家護理醫囑單」執行[cite: 2, 4]。
             </p>
         </section>
 
@@ -44,10 +303,22 @@
             <h2>機構聯絡資訊</h2>
             <p class="intro-text">
                 <strong>🏢 機構名稱：</strong>愛馨居家護理所<br>
-                <strong>📍 機構地址：</strong>新北市新店區中央路 173-2 號 1 樓（臨近美河市、小碧潭社區）<br>
+                <strong>📍 機構地址：</strong>新北市新店區中央路 173-2 號 1 樓（臨近美河市、小碧潭社區）[cite: 1, 2, 3, 4]<br>
                 <strong>📞 籌備聯絡電話：</strong>02-2218-XXXX (籌備處)<br>
-                <strong>💼 預定開業時間：</strong>2026 年 8 月
+                <strong>💼 預定開業時間：</strong>2026 年 8 月[cite: 1]
             </p>
         </section>
     </div>
+
+    <footer>
+        <p><strong>愛馨居家護理所</strong></p>
+        <p>📍 機構地址：新北市新店區中央路 173-2 號 1 樓[cite: 1, 2, 3, 4]</p>
+        <p>💼 負責人：負責護理長 | 預定開業時間：2026 年 8 月[cite: 1]</p>
+        <div class="footer-meta">
+            <p>© 2026 愛馨居家護理所. All Rights Reserved. 醫療機構核准字號申請中。</p>
+            <p>本站採用 macOS Glassmorphism 沉浸式無邊框設計，用心守護，溫馨相伴。</p>
+        </div>
+    </footer>
+
 </body>
+</html>
