@@ -1,13 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 - 愛馨居家護理所</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-bg-hover: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-main: #1d1d1f;
+            --text-sub: #515154;
+            --accent-blue: #0071e3;
+            --accent-green: #34c759;
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.06);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d2e3fc 0%, #e8eaed 35%, #fad2e1 70%, #e2f0d9 100%);
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", "Microsoft JhengHei", sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 120px 20px 80px 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 電腦版導覽列 */
+        .nav-desktop {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 24px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-desktop .brand {
+            font-weight: 800;
+            color: var(--text-main);
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-desktop a.nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-desktop a.nav-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: var(--accent-blue);
+        }
+
+        .nav-desktop a.nav-link.active {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* 手機版導覽列 */
+        .nav-mobile {
+            display: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--glass-bg-hover);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(52, 199, 89, 0.12);
+            color: #248a3d;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(52, 199, 89, 0.2);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #111112 30%, #444446 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 750;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 22px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+        }
+
+        p.intro-text {
+            font-size: 1.1rem;
+            color: #2f2f31;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* 輸入表單 CSS */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: rgba(0, 113, 227, 0.9);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            background: rgba(0, 113, 227, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 113, 227, 0.35);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 16px 100px 16px;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .glass-card {
+                padding: 24px;
+            }
+            .nav-desktop {
+                display: none;
+            }
+            .nav-mobile {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(255, 255, 255, 0.35);
+                justify-content: space-around;
+                padding: 10px 0 calc(10px + env(safe-area-inset-bottom)) 0;
+                box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.03);
+            }
+            .nav-mobile a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-sub);
+                font-size: 0.75rem;
+                font-weight: 600;
+                flex: 1;
+                transition: all 0.2s ease;
+            }
+            .nav-mobile a .nav-icon {
+                font-size: 1.4rem;
+                margin-bottom: 2px;
+            }
+            .nav-mobile a:hover, .nav-mobile a.active {
+                color: var(--accent-blue);
+            }
+        }
+    </style>
+</head>
 <body>
+
+    <nav class="nav-desktop">
+        <a href="index.html" class="brand">愛馨居家護理</a>
+        <a href="index.html" class="nav-link">首頁</a>
+        <a href="about.html" class="nav-link">關於我們</a>
+        <a href="services.html" class="nav-link">專業服務</a>
+        <a href="pricing.html" class="nav-link">給付收費</a>
+        <a href="contact.html" class="nav-link active">聯絡我們</a>
+    </nav>
+
+    <nav class="nav-mobile">
+        <a href="index.html">
+            <span class="nav-icon">🏠</span>
+            <span>首頁</span>
+        </a>
+        <a href="about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span>關於</span>
+        </a>
+        <a href="services.html">
+            <span class="nav-icon">🩺</span>
+            <span>服務</span>
+        </a>
+        <a href="pricing.html">
+            <span class="nav-icon">💰</span>
+            <span>收費</span>
+        </a>
+        <a href="contact.html" class="active">
+            <span class="nav-icon">📞</span>
+            <span>聯絡</span>
+        </a>
+    </nav>
+
     <div class="container">
         <header>
             <span class="badge">歡迎洽詢預約</span>
             <h1>聯絡與諮詢預約</h1>
-            <p>我們將有專人回覆您的居家護理、吞嚥復能與照護資格評估需求</p>
+            <p>我們將有專人回覆您的居家護理、吞嚥復能與照護資格評估需求[cite: 1, 2, 3, 4]</p>
         </header>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-bottom: 40px;">
             
+            <!-- 機構聯絡資訊 -->
             <section class="glass-card" style="margin-bottom: 0;">
                 <h2>聯絡方式</h2>
                 <p class="intro-text">
@@ -15,16 +344,17 @@
                 </p>
                 <p class="intro-text" style="line-height: 2;">
                     🏢 <strong>機構名稱：</strong>愛馨居家護理所<br>
-                    📍 <strong>機構地址：</strong>新北市新店區中央路 173-2 號 1 樓<br>
+                    📍 <strong>機構地址：</strong>新北市新店區中央路 173-2 號 1 樓[cite: 1, 2, 3, 4]<br>
                     📞 <strong>籌備處電話：</strong>02-2218-XXXX<br>
                     ⏳ <strong>服務時間：</strong>週一至週五 09:00 - 18:00<br>
-                    💼 <strong>預計正式開業：</strong>2026 年 8 月
+                    💼 <strong>預計正式開業：</strong>2026 年 8 月[cite: 1]
                 </p>
                 <p class="intro-text" style="font-size: 0.95rem; color: var(--text-sub); border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 15px; margin-top: 15px;">
-                    * 註：若您或您的家人目前正處於「醫院出院準備階段」，請與醫院出院準備服務小組說明您欲介接「愛馨居家護理所」進行居家語言與吞嚥照護，我們能提供無縫的出院接軌服務。
+                    * 註：若您或您的家人目前正處於「醫院出院準備階段」，請與醫院出院準備服務小組說明您欲介接「愛馨居家護理所」進行居家語言與吞嚥照護，我們能提供無縫的出院接軌服務[cite: 5]。
                 </p>
             </section>
 
+            <!-- 線上表單 -->
             <section class="glass-card" style="margin-bottom: 0;">
                 <h2>線上諮詢預約</h2>
                 <form onsubmit="alert('您的諮詢表單已成功送出！愛馨籌備處將於1個工作天內與您聯絡。'); return false;">
@@ -45,6 +375,19 @@
                     </button>
                 </form>
             </section>
+
         </div>
     </div>
+
+    <footer>
+        <p><strong>愛馨居家護理所</strong></p>
+        <p>📍 機構地址：新北市新店區中央路 173-2 號 1 樓[cite: 1, 2, 3, 4]</p>
+        <p>💼 負責人：負責護理長 | 預定開業時間：2026 年 8 月[cite: 1]</p>
+        <div class="footer-meta">
+            <p>© 2026 愛馨居家護理所. All Rights Reserved. 醫療機構核准字號申請中。</p>
+            <p>本站採用 macOS Glassmorphism 沉浸式無邊框設計，用心守護，溫馨相伴。</p>
+        </div>
+    </footer>
+
 </body>
+</html>
