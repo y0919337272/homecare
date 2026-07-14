@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>居家護理到宅照護生理量測設備 ｜ 產品比較報告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132322;
+    --ink-soft:#3c4e4b;
+    --paper:#f4f2ea;
+    --paper-deep:#eae6d8;
+    --teal:#134e4a;
+    --teal-deep:#0b302d;
+    --teal-mist:#e4ece9;
+    --amber:#c8792a;
+    --amber-soft:#f2e1c9;
+    --line:#c9c2ac;
+    --good:#2f6b4f;
+    --warn:#a5461f;
+    --white:#fffdf7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans TC','Noto Serif TC',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px 90px;}
+
+  /* ===== Header ===== */
+  header.hero{
+    background:linear-gradient(160deg,var(--teal-deep) 0%,var(--teal) 62%,#1c5c56 100%);
+    color:var(--white);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; right:-120px; top:-120px;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(200,121,42,0.28),transparent 70%);
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Roboto Mono',monospace;font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:#c9e2da;
+    border:1px solid rgba(255,255,255,.28); padding:6px 14px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow span.dot{width:6px;height:6px;border-radius:50%;background:var(--amber);display:inline-block;}
+  h1.title{
+    font-family:'Noto Serif TC',serif; font-weight:900;
+    font-size:clamp(30px,4.4vw,46px); margin:0 0 16px; line-height:1.28;
+    max-width:820px;
+  }
+  .hero-sub{font-size:16.5px;color:#d7e6e1;max-width:640px;margin:0 0 30px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:28px;font-size:13.5px;color:#bcd6cd;font-family:'Roboto Mono',monospace;}
+  .hero-meta b{color:#fff;font-weight:500;}
+
+  /* ===== Sections ===== */
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .kicker{
+    font-family:'Roboto Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--amber);margin:0 0 10px;font-weight:500;
+  }
+  h2.sec-title{font-family:'Noto Serif TC',serif;font-size:26px;font-weight:700;margin:0 0 8px;color:var(--teal-deep);}
+  .sec-desc{color:var(--ink-soft);max-width:720px;margin:0 0 34px;font-size:15px;}
+
+  /* ===== Executive summary card ===== */
+  .brief-card{
+    background:var(--white); border:1px solid var(--line); border-radius:4px;
+    padding:32px 34px; display:grid; grid-template-columns:1.3fr 1fr; gap:36px;
+    box-shadow:0 1px 0 rgba(19,35,34,.04);
+  }
+  .brief-card h3{margin:0 0 12px;font-family:'Noto Serif TC',serif;font-size:19px;color:var(--teal-deep);}
+  .brief-card p{margin:0 0 14px;font-size:14.8px;color:var(--ink-soft);}
+  .pick-tag{
+    display:inline-block;background:var(--teal);color:#fff;font-size:12.5px;padding:4px 12px;border-radius:3px;
+    font-family:'Roboto Mono',monospace;letter-spacing:.03em;margin-bottom:14px;
+  }
+  .verdict-box{background:var(--teal-mist);border-left:3px solid var(--teal);padding:20px 22px;border-radius:2px;}
+  .verdict-box ol{margin:0;padding-left:20px;font-size:14px;color:var(--ink-soft);}
+  .verdict-box li{margin-bottom:8px;}
+  .verdict-box li b{color:var(--ink);}
+
+  /* ===== Product cards ===== */
+  .prod-grid{display:flex;flex-direction:column;gap:22px;}
+  .prod-card{
+    background:var(--white); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+    display:grid; grid-template-columns:220px 1fr; 
+  }
+  .prod-side{
+    background:var(--teal-deep); color:#fff; padding:26px 24px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .prod-num{font-family:'Roboto Mono',monospace;font-size:12px;color:#9ecfc2;letter-spacing:.1em;margin-bottom:10px;}
+  .prod-vendor{font-size:13px;color:#c9e2da;margin-top:14px;line-height:1.5;}
+  .prod-link{font-size:12px;color:#f2cf9d;word-break:break-all;margin-top:12px;display:block;}
+  .prod-link a{color:#f2cf9d;text-decoration:none;border-bottom:1px dotted rgba(242,207,157,.5);}
+  .prod-body{padding:26px 28px;}
+  .prod-photos{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px;margin-bottom:20px;}
+  .prod-photos img{
+    width:100%;height:132px;object-fit:cover;border-radius:3px;border:1px solid var(--line);
+    background:var(--paper-deep);display:block;
+  }
+  .prod-photos .cap{font-size:10.5px;color:#8a8570;margin-top:4px;font-family:'Roboto Mono',monospace;}
+  .prod-name{font-family:'Noto Serif TC',serif;font-size:21px;font-weight:700;margin:0 0 6px;color:var(--teal-deep);}
+  .prod-tagline{font-size:13.5px;color:var(--amber);font-weight:500;margin-bottom:14px;}
+  .prod-desc{font-size:14px;color:var(--ink-soft);margin-bottom:18px;}
+  .spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;font-size:13.3px;}
+  .spec-item{border-top:1px dashed var(--line);padding-top:8px;}
+  .spec-item .k{color:#8a8570;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-family:'Roboto Mono',monospace;display:block;margin-bottom:3px;}
+  .spec-item .v{color:var(--ink);}
+  .price-flag{
+    margin-top:16px;background:var(--amber-soft);color:var(--warn);font-size:12.8px;padding:9px 14px;border-radius:3px;
+    display:inline-block;
+  }
+
+  /* ===== Comparison table ===== */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--white);}
+  table{border-collapse:collapse;width:100%;min-width:820px;font-size:13.6px;}
+  thead th{
+    background:var(--teal-deep); color:#fff; text-align:left; padding:14px 16px; font-weight:500;
+    font-family:'Roboto Mono',monospace; font-size:12px; letter-spacing:.03em; white-space:nowrap;
+  }
+  thead th:first-child{position:sticky;left:0;background:var(--teal-deep);}
+  tbody td{padding:13px 16px; border-bottom:1px solid var(--paper-deep); vertical-align:top; color:var(--ink-soft);}
+  tbody td:first-child{
+    font-weight:700;color:var(--teal-deep);white-space:nowrap;background:var(--white);position:sticky;left:0;
+    border-right:1px solid var(--paper-deep);
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover td{background:#faf9f3;}
+  tbody tr:hover td:first-child{background:#faf9f3;}
+  .tag{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:2px;margin:1px 3px 1px 0;white-space:nowrap;}
+  .tag.good{background:#e3efe6;color:var(--good);}
+  .tag.warn{background:var(--amber-soft);color:var(--warn);}
+  .tag.neu{background:var(--teal-mist);color:var(--teal);}
+
+  /* ===== Similar product note ===== */
+  .extra-box{
+    background:#fbf9f1;border:1px dashed var(--line);border-radius:4px;padding:22px 26px;margin-top:8px;
+  }
+  .extra-box h4{margin:0 0 8px;font-size:15.5px;color:var(--teal-deep);font-family:'Noto Serif TC',serif;}
+  .extra-box p{margin:0;font-size:13.8px;color:var(--ink-soft);}
+
+  /* ===== Recommendation section ===== */
+  .reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .reco-card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:22px 22px 24px;}
+  .reco-card .n{font-family:'Roboto Mono',monospace;color:var(--amber);font-size:13px;margin-bottom:8px;}
+  .reco-card h4{margin:0 0 10px;font-size:16px;color:var(--teal-deep);font-family:'Noto Serif TC',serif;}
+  .reco-card p{margin:0;font-size:13.6px;color:var(--ink-soft);}
+
+  .decision-strip{
+    margin-top:28px;background:var(--teal-deep);color:#fff;border-radius:4px;padding:26px 30px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .decision-strip .txt h4{margin:0 0 6px;font-family:'Noto Serif TC',serif;font-size:18px;}
+  .decision-strip .txt p{margin:0;font-size:13.6px;color:#cfe4dd;max-width:560px;}
+  .decision-strip .badge{
+    background:var(--amber);color:#2a1a09;font-weight:700;font-size:14px;padding:10px 20px;border-radius:3px;white-space:nowrap;
+  }
+
+  /* ===== Next steps ===== */
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+  .steps li{
+    counter-increment:step; position:relative; padding:14px 0 14px 46px; border-bottom:1px solid var(--paper-deep);
+    font-size:14.3px;color:var(--ink-soft);
+  }
+  .steps li:last-child{border-bottom:none;}
+  .steps li::before{
+    content:counter(step);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:50%;
+    background:var(--teal-mist);color:var(--teal-deep);font-family:'Roboto Mono',monospace;font-size:13px;
+    display:flex;align-items:center;justify-content:center;font-weight:700;
+  }
+  .steps li b{color:var(--ink);}
+
+  footer{padding:34px 0 10px;text-align:center;color:#8a8570;font-size:12.5px;}
+
+  @media (max-width:760px){
+    .brief-card{grid-template-columns:1fr;}
+    .prod-card{grid-template-columns:1fr;}
+    .prod-side{flex-direction:row;flex-wrap:wrap;gap:10px;align-items:center;}
+    .spec-grid{grid-template-columns:1fr;}
+    .reco-grid{grid-template-columns:1fr;}
+    .decision-strip{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>採購評估備忘 · 供內部決策參考</div>
+    <h1 class="title">居家護理到宅照護<br>生理量測設備比較報告</h1>
+    <p class="hero-sub">針對居家護理所護理師到宅訪視情境，評估三款可攜式多功能生理量測裝置的功能、認證、佈建方式與報價模式，並補充同類產品供對照。</p>
+    <div class="hero-meta">
+      <div>報告日期　<b>2026 年 7 月 14 日</b></div>
+      <div>評估情境　<b>居家護理所 · 護理師到宅照護</b></div>
+      <div>比較產品　<b>3 款主案 + 2 款延伸對照</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ================= EXECUTIVE SUMMARY ================= -->
+  <section>
+    <p class="kicker">Executive Summary</p>
+    <h2 class="sec-title">結論先講：三款各有定位，沒有絕對的贏家</h2>
+    <p class="sec-desc">三款產品雖然都主打「多功能生理量測 + 雲端整合」，但實際定位差異頗大——從單人到府攜帶用的輕巧包，到多人次、機構等級的專業機種都有。選擇上應以「護理師實際到宅的量測項目需求」與「既有系統介接需求」為主要判準，而非單純比規格多寡。</p>
+    <div class="brief-card">
+      <div>
+        <span class="pick-tag">初步建議</span>
+        <h3>以到宅單一個案訪視為主 → 優先評估「健康隨行包」</h3>
+        <p>健康隨行包（先進醫資）主打「輕巧攜帶＋各裝置可獨立使用」，重量僅約 3 公斤，且已支援 ICOPE 長者功能評估流程與國健署報表格式，對「一位護理師、一次訪視、多個案輪替」的居家護理所工作型態最貼合。租賃制三年到期贈機的條件，也降低了設備汰換的財務壓力。</p>
+        <p>若居家護理所同時承接社區篩檢、日照或機構合作等「多人次、單點量測」場景，CoDoctor Pro 的 12 導程心電圖與血糖／尿酸／膽固醇擴充檢測，會是加分項，但機身重量（整機約 1.57kg、含 10.1 吋顯示器）較不利於單人徒手攜帶跑多戶。</p>
+        <p>imedtac Easy Doctor 屬於模組化居家型 RPM 套件，較適合「個案自我量測 + 資料回傳」的遠距照護場景，若護理師到宅目的是安裝／教導個案自行使用，而非每次到場即時量測，這款更合適。</p>
+      </div>
+      <div class="verdict-box">
+        <h3 style="margin-top:0;">決策前必須先確認的 3 件事</h3>
+        <ol>
+          <li><b>量測項目清單</b>：居家護理所醫囑常見的量測（血壓、血糖、血氧、體溫）三款都有，但心電圖導程數、尿酸／膽固醇是否為必要，會直接篩掉不需要的高階機種。</li>
+          <li><b>系統介接對象</b>：是否需要串接醫院 HIS、健保居家醫療照護整合計畫申報格式，或現有的居家護理管理系統，三家平台（享健康雲、Friend CARE APP、imedtac RPM 平台）互不相容。</li>
+          <li><b>報價模式</b>：三款皆未公開定價，且多採「專案報價／租賃制」，實際費用會因人數、租期、功能模組而異，需個別發函詢價。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT PROFILES ================= -->
+  <section>
+    <p class="kicker">Product Profiles</p>
+    <h2 class="sec-title">三款主案產品逐一檢視</h2>
+    <p class="sec-desc">以下資訊整理自各產品原始頁面公開內容，報價欄位如頁面未列出具體金額，皆標註為「未公開／需個案報價」。</p>
+
+    <div class="prod-grid">
+
+      <!-- Product 1 -->
+      <div class="prod-card">
+        <div class="prod-side">
+          <div>
+            <div class="prod-num">PRODUCT 01</div>
+            <div style="font-size:13px;color:#e6f0ec;">居家照護包型</div>
+          </div>
+          <div>
+            <div class="prod-vendor">先進醫資股份有限公司<br>（銀光科技上架）</div>
+            <div class="prod-link"><a href="https://www.ideas-hatch.com/hatch_smartcare_detail.jsp?id=35" target="_blank" rel="noopener">ideas-hatch.com ／ id=35</a></div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-photos">
+            <img src="https://www.ideas-hatch.com/smartcare_proposal_picture/105" alt="健康隨行包 產品實照 1" loading="lazy">
+            <img src="https://www.ideas-hatch.com/smartcare_proposal_picture/106" alt="健康隨行包 產品實照 2" loading="lazy">
+            <img src="https://www.ideas-hatch.com/smartcare_proposal_picture/107" alt="健康隨行包 產品實照 3" loading="lazy">
+          </div>
+          <h3 class="prod-name">健康隨行包</h3>
+          <div class="prod-tagline">輕巧可攜．各裝置獨立使用．支援 ICOPE 長者評估</div>
+          <p class="prod-desc">主打到宅醫療與行動巡檢，內含血壓、血氧、額溫、血糖機等量測設備，可透過「享健康醫護隨行版 APP」即時上傳雲端，並支援 ICOPE 評估流程與國健署報表格式，是三款中唯一明確提及長者功能評估工作流程整合的產品。</p>
+          <div class="spec-grid">
+            <div class="spec-item"><span class="k">尺寸／重量</span><span class="v">35×22×15 cm，淨重約 3 kg</span></div>
+            <div class="spec-item"><span class="k">醫材許可證</span><span class="v">衛部醫器製字第 003110／006076／006410 號</span></div>
+            <div class="spec-item"><span class="k">聯網方式</span><span class="v">Wi-Fi／SIM卡（平板手機）＋藍牙（量測設備）</span></div>
+            <div class="spec-item"><span class="k">電力</span><span class="v">充電式，設備內建電池</span></div>
+            <div class="spec-item"><span class="k">佈建方式</span><span class="v">免安裝，開機即可使用</span></div>
+            <div class="spec-item"><span class="k">備貨期</span><span class="v">2 週內</span></div>
+          </div>
+          <div class="price-flag">報價模式：賣斷制（一年保固）／租賃制（一年起租，滿三年贈機）— 未列出具體金額</div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="prod-card">
+        <div class="prod-side">
+          <div>
+            <div class="prod-num">PRODUCT 02</div>
+            <div style="font-size:13px;color:#e6f0ec;">機構／專業版檢測儀</div>
+          </div>
+          <div>
+            <div class="prod-vendor">法蘭德醫療器材<br>物業管理顧問股份有限公司</div>
+            <div class="prod-link"><a href="https://www.ideas-hatch.com/hatch_smartcare_detail.jsp?id=181" target="_blank" rel="noopener">ideas-hatch.com ／ id=181</a></div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-photos">
+            <img src="https://www.ideas-hatch.com/smartcare_proposal_picture/976" alt="CoDoctor Pro 產品實照 1" loading="lazy">
+            <img src="https://www.ideas-hatch.com/smartcare_proposal_picture/978" alt="CoDoctor Pro 產品實照 2" loading="lazy">
+            <img src="https://www.ideas-hatch.com/smartcare_proposal_picture/980" alt="CoDoctor Pro 產品實照 3" loading="lazy">
+          </div>
+          <h3 class="prod-name">CoDoctor Pro 智合醫多功能檢測儀 專業版</h3>
+          <div class="prod-tagline">10.1 吋一體機．12 導程心電圖．血糖尿酸膽固醇擴充</div>
+          <p class="prod-desc">屬於 CoDoctor 系列的專業版本，較居家版（Home）多出 12 導程心電圖、血糖、尿酸、總膽固醇等進階代謝／心血管檢測，官網明確定位為醫療院所、診所、長照機構、日照中心與社區篩檢使用，適合「多人次、單一定點」的量測情境，而非護理師隨身攜帶跑多戶。</p>
+          <div class="spec-grid">
+            <div class="spec-item"><span class="k">尺寸／重量</span><span class="v">265×209×58 mm，整機淨重 1,570 g（另含 10.1 吋螢幕）</span></div>
+            <div class="spec-item"><span class="k">醫材許可證</span><span class="v">衛部醫器字第 008214 號（第二類醫材）</span></div>
+            <div class="spec-item"><span class="k">聯網方式</span><span class="v">Wi-Fi 802.11a/b/g/n/ac ＋ 藍牙 5.0</span></div>
+            <div class="spec-item"><span class="k">電力</span><span class="v">5200mAh／滿電連續使用 ≥3 小時、待機 ≥20 天</span></div>
+            <div class="spec-item"><span class="k">佈建方式</span><span class="v">可自行安裝，或專員到府安裝設定</span></div>
+            <div class="spec-item"><span class="k">備貨期</span><span class="v">有現貨 3–5 天／批量訂製 30–60 天</span></div>
+          </div>
+          <div class="price-flag">報價模式：租賃制，依場域／功能配置／人數採「專案報價」— 未列出具體金額</div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="prod-card">
+        <div class="prod-side">
+          <div>
+            <div class="prod-num">PRODUCT 03</div>
+            <div style="font-size:13px;color:#e6f0ec;">居家 RPM 模組套件</div>
+          </div>
+          <div>
+            <div class="prod-vendor">慧誠智醫股份有限公司（imedtac）</div>
+            <div class="prod-link"><a href="https://www.imedtac.com/service/easy-doctor/" target="_blank" rel="noopener">imedtac.com ／ service/easy-doctor</a></div>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-photos">
+            <img src="https://img.medicalexpo.com/images_me/photo-g/129181-18191338.jpg" alt="imedtac Easy Doctor 產品實照" loading="lazy" style="grid-column:1 / -1;height:200px;">
+          </div>
+          <h3 class="prod-name">Easy Doctor 5 合 1 遠距生理量測套件</h3>
+          <div class="prod-tagline">模組化設計．無螢幕無按鍵．個案自主量測導向</div>
+          <p class="prod-desc">定位為「極簡設計」的居家用 RPM（遠距病人監測）套件，無螢幕、無額外按鍵，透過內建電池與藍牙／Wi-Fi 模組連接手機 App 上傳資料至醫療端 EMR／雲端平台。可依需求選配模組（血壓、血糖／尿酸／膽固醇、三導程心電圖），較適合「個案在家自行量測、資料被動回傳」的場景，而非護理師到宅時當場操作多項檢測。</p>
+          <div class="spec-grid">
+            <div class="spec-item"><span class="k">組成模組</span><span class="v">血壓計／血糖·尿酸·膽固醇機／3 導程心電圖（血氧、體溫模組另於後續推出）</span></div>
+            <div class="spec-item"><span class="k">醫材許可證</span><span class="v">台灣 TFDA 許可字號 006444／006490／006588（CE、US FDA 申請中）</span></div>
+            <div class="spec-item"><span class="k">聯網方式</span><span class="v">BLE／Wi-Fi 模組，連接 iOS／Android App</span></div>
+            <div class="spec-item"><span class="k">電力</span><span class="v">內建充電電池</span></div>
+            <div class="spec-item"><span class="k">整合能力</span><span class="v">提供標準 API，可對接既有 RPM／照護管理平台，並支援 OEM／貼牌</span></div>
+            <div class="spec-item"><span class="k">備貨期</span><span class="v">官網未列出，需洽詢</span></div>
+          </div>
+          <div class="price-flag">報價模式：官網未提供公開定價或報價模式說明，且該頁面禁止自動化存取 — 建議直接聯繫業者索取正式報價單</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= VITAL SIGNS & FEATURE MATRIX ================= -->
+  <section>
+    <p class="kicker">Full Feature Matrix</p>
+    <h2 class="sec-title">完整功能與生命徵象量測比較表</h2>
+    <p class="sec-desc">以下針對三款主案產品，逐項列出可量測的生命徵象／生化檢測項目，以及軟體平台與延伸服務功能，方便逐條核對是否符合居家護理所實際醫囑需求。<br>
+    <span class="tag good" style="margin-top:8px;">●</span>內建支援　
+    <span class="tag warn" style="background:var(--amber-soft);color:var(--warn);">◐</span>選配／需擴充模組　
+    <span class="tag neu" style="background:#eee;color:#8a8570;">—</span>官網未提及／不支援</p>
+
+    <h3 style="font-family:'Noto Serif TC',serif;font-size:16.5px;color:var(--teal-deep);margin:0 0 14px;">A. 可量測的生命徵象與生化檢測項目</h3>
+    <div class="table-scroll" style="margin-bottom:36px;">
+      <table>
+        <thead>
+          <tr>
+            <th>量測項目</th>
+            <th>健康隨行包</th>
+            <th>CoDoctor Pro 專業版</th>
+            <th>Easy Doctor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>血壓（NIBP）</td><td>●</td><td>●</td><td>●</td></tr>
+          <tr><td>血氧 SpO₂</td><td>●</td><td>●</td><td>◐（規劃中模組，官網稱 2022 年推出）</td></tr>
+          <tr><td>脈搏／心率</td><td>●（隨血氧模組量測）</td><td>●</td><td>●（隨血氧模組量測）</td></tr>
+          <tr><td>心電圖 ECG</td><td>—</td><td>●　單導程 + 12 導程</td><td>●　3 導程（手持／電極片雙模式）</td></tr>
+          <tr><td>呼吸速率／血氧飽和指數</td><td>—</td><td>—</td><td>●（含灌注指數 PI、缺氧指數 ODI）</td></tr>
+          <tr><td>體溫（額溫）</td><td>●</td><td>●</td><td>◐（規劃中模組）</td></tr>
+          <tr><td>體脂／身體組成</td><td>—</td><td>●</td><td>—</td></tr>
+          <tr><td>身高／體重</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>血糖</td><td>●</td><td>●</td><td>●</td></tr>
+          <tr><td>尿酸</td><td>—</td><td>●</td><td>●</td></tr>
+          <tr><td>總膽固醇</td><td>—</td><td>●</td><td>●</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:'Noto Serif TC',serif;font-size:16.5px;color:var(--teal-deep);margin:0 0 14px;">B. 軟體平台與延伸服務功能</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>功能</th>
+            <th>健康隨行包</th>
+            <th>CoDoctor Pro 專業版</th>
+            <th>Easy Doctor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>App／雲端即時同步</td><td>●　享健康醫護隨行版 APP</td><td>●　Friend CARE APP</td><td>●　iOS／Android App</td></tr>
+          <tr><td>ICOPE 長者功能評估流程</td><td>●　含初評／複評引導</td><td>—</td><td>—</td></tr>
+          <tr><td>國健署格式報表匯出</td><td>●</td><td>—</td><td>—</td></tr>
+          <tr><td>個案歷史數據調閱</td><td>●</td><td>●　大家醫全民健康數位照護平台</td><td>●　需經 API 上傳至醫療端 EMR</td></tr>
+          <tr><td>穿戴式裝置擴充（心血管追蹤）</td><td>◐　需另接穿戴裝置</td><td>—</td><td>—</td></tr>
+          <tr><td>AI 傷口／褥瘡辨識</td><td>◐　平台擴充功能</td><td>—</td><td>—</td></tr>
+          <tr><td>訪視量表／問卷</td><td>◐</td><td>—</td><td>—</td></tr>
+          <tr><td>AI 語音外撥關懷服務</td><td>◐</td><td>—</td><td>—</td></tr>
+          <tr><td>遠距視訊問診</td><td>—</td><td>●</td><td>—</td></tr>
+          <tr><td>健康數據分析／趨勢圖</td><td>●</td><td>●</td><td>●　視覺化健康趨勢</td></tr>
+          <tr><td>資料交換 API（可對接院所系統）</td><td>◐　可串接臨床端／機構系統</td><td>—（頁面未提及）</td><td>●　明確提供標準 API</td></tr>
+          <tr><td>OEM／貼牌客製</td><td>—</td><td>—</td><td>●（需額外 NRE 費用及 MOQ）</td></tr>
+          <tr><td>專員到府安裝設定</td><td>—（免安裝即可用）</td><td>●</td><td>—</td></tr>
+          <tr><td>各裝置可否單機獨立使用</td><td>●　各量測裝置皆可獨立運作</td><td>—（一體機設計）</td><td>●　模組化、可分開部署</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON TABLE ================= -->
+  <section>
+    <p class="kicker">Side-by-Side</p>
+    <h2 class="sec-title">規格與定位比較表</h2>
+    <p class="sec-desc">橫向比較三款主案，並延伸列入兩款同系列 / 同類型產品，供完整評估對照使用。</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>比較項目</th>
+            <th>健康隨行包</th>
+            <th>CoDoctor Pro 專業版</th>
+            <th>Easy Doctor</th>
+            <th>延伸：CoDoctor Home 居家版*</th>
+            <th>延伸：智慧健康照護站*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>廠商</td>
+            <td>先進醫資</td>
+            <td>法蘭德醫療器材物業管理顧問</td>
+            <td>慧誠智醫（imedtac）</td>
+            <td>法蘭德醫療器材物業管理顧問</td>
+            <td>先進醫資</td>
+          </tr>
+          <tr>
+            <td>定位</td>
+            <td><span class="tag good">到宅攜帶包</span></td>
+            <td><span class="tag warn">機構／專業版</span></td>
+            <td><span class="tag neu">居家 RPM 模組</span></td>
+            <td><span class="tag good">居家版（同系列較輕量）</span></td>
+            <td><span class="tag warn">定點站型（非攜帶）</span></td>
+          </tr>
+          <tr>
+            <td>攜帶性</td>
+            <td>佳，約 3kg，一體式提包</td>
+            <td>普通，整機約 1.57kg + 10.1吋螢幕，較適合定點使用</td>
+            <td>佳，模組化、無螢幕設計最輕便</td>
+            <td>推估優於 Pro（官網未提供公開頁面確認）</td>
+            <td>不適合攜帶，屬於固定站點設備</td>
+          </tr>
+          <tr>
+            <td>量測項目</td>
+            <td>血壓、血氧、額溫、血糖（各裝置獨立使用）</td>
+            <td>血壓、血氧、單導程／12導程心電圖、體溫、體脂、血糖、尿酸、總膽固醇</td>
+            <td>血壓、血糖／尿酸／膽固醇、3導程心電圖（血氧／體溫模組籌備中）</td>
+            <td>基礎量測（血壓／血氧／單導程心電圖／體溫／體脂），無12導程與血液生化擴充</td>
+            <td>血壓、血氧、額溫、身高體重</td>
+          </tr>
+          <tr>
+            <td>長者評估流程支援</td>
+            <td><span class="tag good">支援 ICOPE 初複評＋國健署報表格式</span></td>
+            <td>未提及</td>
+            <td>未提及</td>
+            <td>未提及</td>
+            <td>健康篩檢量表、衛教影音</td>
+          </tr>
+          <tr>
+            <td>醫材認證</td>
+            <td>衛部醫器製字第 003110／006076／006410 號</td>
+            <td>衛部醫器字第 008214 號（第二類醫材）</td>
+            <td>TFDA 006444／006490／006588（CE、US FDA 申請中）</td>
+            <td>比照 Pro 系列認證體系（頁面未單獨列出）</td>
+            <td>未列出具體許可證字號</td>
+          </tr>
+          <tr>
+            <td>聯網／資料上傳</td>
+            <td>Wi-Fi／SIM＋藍牙，App 即時上雲</td>
+            <td>Wi-Fi 802.11ac＋藍牙5.0</td>
+            <td>BLE／Wi-Fi＋App，提供資料交換 API</td>
+            <td>比照 Pro 系列</td>
+            <td>手機號碼／健保卡／NFC卡建立帳號</td>
+          </tr>
+          <tr>
+            <td>平台整合</td>
+            <td>享健康醫護隨行版 APP＋共照雲</td>
+            <td>Friend CARE APP＋大家醫全民健康數位照護平台</td>
+            <td>imedtac RPM 平台，支援 API 對接院方 EMR</td>
+            <td>Friend CARE APP</td>
+            <td>共照健康雲平台</td>
+          </tr>
+          <tr>
+            <td>報價模式</td>
+            <td>賣斷（一年保固）／租賃（滿三年贈機）</td>
+            <td>租賃制，專案報價</td>
+            <td>官網未列出，需洽詢（頁面禁止自動存取）</td>
+            <td>推估比照 Pro，未查得公開頁面</td>
+            <td>頁面未列出報價資訊</td>
+          </tr>
+          <tr>
+            <td>備貨期</td>
+            <td>2 週內</td>
+            <td>有貨 3–5 天／批量 30–60 天</td>
+            <td>未提供</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>最適合情境</td>
+            <td>單一護理師到宅、多個案輪替訪視</td>
+            <td>社區篩檢、日照中心、機構定點多人次量測</td>
+            <td>個案居家自主量測＋資料回傳醫療端</td>
+            <td>需求輕量化但仍要 Friend 平台整合時可再洽詢</td>
+            <td>衛生所／機構大廳自助健康站</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="extra-box" style="margin-top:18px;">
+      <h4>* 關於延伸對照產品的說明</h4>
+      <p>「CoDoctor Home 居家版」為 CoDoctor Pro 頁面上明確提及的同系列較輕量款，但銀光科技目錄與 imedtac／法蘭德官網皆未查得該款獨立產品頁與完整規格，僅能列為「同系列可能選項」，建議直接向法蘭德醫療器材洽詢居家版規格與報價，確認是否更貼合到宅攜帶需求。「智慧健康照護站」則是健康隨行包同廠商（先進醫資）的固定站型產品（見健康隨行包頁面「套裝系統」區塊），適合機構大廳自助健康站，非到宅攜帶用途，僅供對照定位差異。</p>
+    </div>
+  </section>
+
+  <!-- ================= PROFESSIONAL RECOMMENDATION ================= -->
+  <section>
+    <p class="kicker">Professional Recommendation</p>
+    <h2 class="sec-title">專業建議：以到宅護理師的實際工作流程為核心</h2>
+    <p class="sec-desc">建議不要只比「量測功能多寡」，而是回到居家護理所實際的到宅動線與人力配置來判斷。以下三個面向是關鍵。</p>
+    <div class="reco-grid">
+      <div class="reco-card">
+        <div class="n">01 · 攜帶負重</div>
+        <h4>護理師一天訪視多戶，重量與體積是隱形成本</h4>
+        <p>健康隨行包（約 3kg，一體式提包）與 Easy Doctor（模組化、無螢幕）明顯比 CoDoctor Pro（10.1 吋一體機）更適合單人徒手攜帶跑多戶。若居家護理所人力吃緊、一位護理師一天要訪視 5–8 戶，重量與收納方式會直接影響效率與職業傷害風險。</p>
+      </div>
+      <div class="reco-card">
+        <div class="n">02 · 業務對接</div>
+        <h4>是否要對接健保居家醫療整合計畫與 ICOPE 評估</h4>
+        <p>若貴所有承接衛福部「居家醫療照護整合計畫」或需要定期執行 ICOPE 長者功能評估，健康隨行包目前是三者中唯一明確支援該流程並可匯出國健署格式報表的產品，可大幅減少人工填表與報表整理時間。</p>
+      </div>
+      <div class="reco-card">
+        <div class="n">03 · 財務模式</div>
+        <h4>租賃 vs 賣斷，要看設備汰換與現金流考量</h4>
+        <p>三款皆未公開定價。健康隨行包提供賣斷（含一年保固）與租賃兩種模式，且租賃滿三年即贈機；CoDoctor Pro 僅提供租賃制專案報價；Easy Doctor 報價模式未公開。建議同時索取三家的「租賃 vs 賣斷」總持有成本比較表，並確認保固範圍是否含消耗品（如試片、電極貼片）。</p>
+      </div>
+    </div>
+
+    <div class="decision-strip">
+      <div class="txt">
+        <h4>若只能選一款先行試辦</h4>
+        <p>建議以「健康隨行包」作為居家護理所到宅照護的主力採購標的，理由：攜帶性最佳、明確支援 ICOPE 與國健署報表格式、備貨期最短（2 週內）、且提供賣斷與租賃兩種彈性方案。CoDoctor Pro 可作為機構端／社區篩檢的輔助設備，Easy Doctor 則適合作為「個案自我量測」延伸應用另案評估。</p>
+      </div>
+      <div class="badge">建議：先洽 先進醫資 索取正式報價</div>
+    </div>
+  </section>
+
+  <!-- ================= NEXT STEPS ================= -->
+  <section>
+    <p class="kicker">Next Steps</p>
+    <h2 class="sec-title">建議後續行動</h2>
+    <ul class="steps">
+      <li><b>索取正式報價單：</b>三款產品官網皆未公開定價，建議同時去信先進醫資、法蘭德醫療器材、慧誠智醫（imedtac）三家業者，並明確告知使用場域（居家護理所到宅）、預估人力配置與個案量，取得可比較的正式報價。</li>
+      <li><b>確認耗材與保固細節：</b>血糖試片、心電圖電極貼片等消耗品成本常未列在主機報價內，需另外向各廠商確認月耗用量與單價，納入總持有成本試算。</li>
+      <li><b>安排實機試用：</b>建議申請健康隨行包與 CoDoctor Pro 的實機或展示影片評估（皆有提供產品影片），實際測試單機重量、開機到完成量測的流程時間。</li>
+      <li><b>釐清資料介接需求：</b>確認貴所現有的個案管理／居家護理紀錄系統，是否能與享健康雲、Friend CARE APP 或 imedtac RPM 平台的 API 對接，避免採購後產生「資料孤島」。</li>
+      <li><b>向法蘭德醫療器材確認「CoDoctor Home 居家版」規格：</b>若攜帶性是首要考量但仍想維持 Friend 平台生態系，值得同步詢問居家版的正式規格書與報價，作為健康隨行包之外的第二方案。</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>本報告內容整理自各產品官方網站公開頁面（截至 2026 年 7 月），實際規格、認證與報價請以廠商正式回覆為準。</footer>
+
+</body>
+</html>
