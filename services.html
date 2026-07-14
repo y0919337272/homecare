@@ -1,45 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業服務 - 愛馨居家護理所</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-bg-hover: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-main: #1d1d1f;
+            --text-sub: #515154;
+            --accent-blue: #0071e3;
+            --accent-green: #34c759;
+            --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.06);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d2e3fc 0%, #e8eaed 35%, #fad2e1 70%, #e2f0d9 100%);
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", "Microsoft JhengHei", sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 120px 20px 80px 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 電腦版導覽列 */
+        .nav-desktop {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 8px 24px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-desktop .brand {
+            font-weight: 800;
+            color: var(--text-main);
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-desktop a.nav-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-desktop a.nav-link:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: var(--accent-blue);
+        }
+
+        .nav-desktop a.nav-link.active {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* 手機版導覽列 */
+        .nav-mobile {
+            display: none;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--glass-bg-hover);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(52, 199, 89, 0.12);
+            color: #248a3d;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(52, 199, 89, 0.2);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #111112 30%, #444446 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 750;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 22px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+        }
+
+        p.intro-text {
+            font-size: 1.1rem;
+            color: #2f2f31;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 16px 100px 16px;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .glass-card {
+                padding: 24px;
+            }
+            .nav-desktop {
+                display: none;
+            }
+            .nav-mobile {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(255, 255, 255, 0.35);
+                justify-content: space-around;
+                padding: 10px 0 calc(10px + env(safe-area-inset-bottom)) 0;
+                box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.03);
+            }
+            .nav-mobile a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-sub);
+                font-size: 0.75rem;
+                font-weight: 600;
+                flex: 1;
+                transition: all 0.2s ease;
+            }
+            .nav-mobile a .nav-icon {
+                font-size: 1.4rem;
+                margin-bottom: 2px;
+            }
+            .nav-mobile a:hover, .nav-mobile a.active {
+                color: var(--accent-blue);
+            }
+        }
+    </style>
+</head>
 <body>
+
+    <nav class="nav-desktop">
+        <a href="index.html" class="brand">愛馨居家護理</a>
+        <a href="index.html" class="nav-link">首頁</a>
+        <a href="about.html" class="nav-link">關於我們</a>
+        <a href="services.html" class="nav-link active">專業服務</a>
+        <a href="pricing.html" class="nav-link">給付收費</a>
+        <a href="contact.html" class="nav-link">聯絡我們</a>
+    </nav>
+
+    <nav class="nav-mobile">
+        <a href="index.html">
+            <span class="nav-icon">🏠</span>
+            <span>首頁</span>
+        </a>
+        <a href="about.html">
+            <span class="nav-icon">ℹ️</span>
+            <span>關於</span>
+        </a>
+        <a href="services.html" class="active">
+            <span class="nav-icon">🩺</span>
+            <span>服務</span>
+        </a>
+        <a href="pricing.html">
+            <span class="nav-icon">💰</span>
+            <span>收費</span>
+        </a>
+        <a href="contact.html">
+            <span class="nav-icon">📞</span>
+            <span>聯絡</span>
+        </a>
+    </nav>
+
     <div class="container">
         <header>
             <span class="badge">整合照護黃金三角</span>
             <h1>專業服務項目</h1>
-            <p>打破照護斷點，提供全面、連續且客製化的居家醫事服務</p>
+            <p>打破照護斷點，提供全面、連續且客製化的居家醫事服務[cite: 1, 2, 3, 4]</p>
         </header>
 
+        <!-- 護理服務 -->
         <section class="glass-card">
             <h2>1. 核心居家護理服務</h2>
             <p class="intro-text">
-                我們提供最高規格的居家護理專業技術，減輕家屬往返醫院更換管路的奔波阻礙：
+                我們提供最高規格的居家護理專業技術，減輕家屬往返醫院更換管路的奔波辛勞：
             </p>
             <p class="intro-text">
-                ✦ <strong>專業留置管路更換與照護：</strong>執行鼻胃管、導尿管、氣切管等「三管技術」之定期更換與消毒。<br>
-                ✦ <strong>壓瘡與傷口照護：</strong>針對長期臥床產生的壓瘡、各類複雜外科傷口，執行專業傷口換藥與家屬照護技術指導。<br>
-                ✦ <strong>生理監測與健康指導：</strong>提供系統性健康評估（長照 CA07 項目），監測個案身體機能。<br>
-                ✦ <strong>代採檢體送驗：</strong>依醫囑執行抽血、留尿等居家檢體採集送檢服務。
+                ✦ <strong>專業留置管路更換與照護：</strong>執行鼻胃管、導尿管、氣切管等「三管技術」之定期更換與消毒[cite: 2, 4]。<br>
+                ✦ <strong>壓瘡與傷口照護：</strong>針對長期臥床產生的壓瘡、各類複雜外科傷口，執行專業傷口換藥與家屬照護技術指導[cite: 2, 4]。<br>
+                ✦ <strong>生理監測與健康指導：</strong>提供系統性健康評估（長照 CA07 項目），監測個案身體機能[cite: 2, 4]。<br>
+                ✦ <strong>代採檢體送驗：</strong>依醫囑執行抽血、留尿等居家檢體採集送檢服務[cite: 2, 4]。
             </p>
         </section>
 
+        <!-- 語言與吞嚥復能 -->
         <section class="glass-card" style="background: rgba(0, 113, 227, 0.03); border-color: rgba(0, 113, 227, 0.15);">
             <h2 style="color: var(--accent-blue);">2. 高階個別化吞嚥復能訓練 (ST)</h2>
             <p class="intro-text">
                 這是愛馨的核心特色！我們特別專注於<strong>吞嚥困難與語言溝通訓練</strong>：
             </p>
             <p class="intro-text">
-                ✦ <strong>吞嚥功能評估與訓練：</strong>由特約/專任語言治療師到府評估個案的口腔肌力、喉部上提能力及吞嚥安全，進行專業的口肌訓練與吞嚥技巧指導。<br>
-                ✦ <strong>科學評估移除鼻胃管：</strong>以個案恢復「由口安全進食」為目標，撰寫個案復能進度與評估報告反饋予主治醫師，提供醫師動態調整臨床醫囑或評估拔除鼻胃管之科學依據，重建尊嚴生活。<br>
-                ✦ <strong>居家語言與溝通訓練：</strong>針對中風、腦傷或失智症導致的失語症、構音障礙，提供個別化的口語表達或輔具溝通訓練。
+                ✦ <strong>吞嚥功能評估與訓練：</strong>由特約/專任語言治療師到府評估個案的口腔肌力、喉部上提能力及吞嚥安全，進行專業的口肌訓練與吞嚥技巧指導[cite: 2, 4]。<br>
+                ✦ <strong>科學評估移除鼻胃管：</strong>以個案恢復「由口安全進食」為目標，撰寫個案復能進度與評估報告反饋予主治醫師，提供醫師動態調整臨床醫囑或評估拔除鼻胃管之科學依據，重建尊嚴生活[cite: 2, 4]。<br>
+                ✦ <strong>居家語言與溝通訓練：</strong>針對中風、腦傷或失智症導致的失語症、構音障礙，提供個別化的口語表達或輔具溝通訓練[cite: 2, 4]。
             </p>
         </section>
 
+        <!-- 營養規劃 -->
         <section class="glass-card">
             <h2>3. 專案飲食質地與營養菜單規劃</h2>
             <p class="intro-text">
-                有了吞嚥訓練，更需要精準安全營養的支持，以預防吸入性肺炎：
+                有了吞嚥訓練，更需要精準安全營養的支持，以預防吸入性肺炎[cite: 2, 4]：
             </p>
             <p class="intro-text">
-                ✦ <strong>一對一居家飲食備餐指導：</strong>由特約營養師親自到府，與照顧者或外籍看護共同協作，實地示範如何針對失能者調整食物質地（糊食、軟食分級調整）。<br>
-                ✦ <strong>個人客製化營養菜單：</strong>評估個案營養與壓傷（褥瘡）風險，根據慢性病狀況客製化調配每日所需之均衡膳食菜單與配方。
+                ✦ <strong>一對一居家飲食備餐指導：</strong>由特約營養師親自到府，與照顧者或外籍看護共同協作，實地示範如何針對失能者調整食物質地（糊食、軟食分級調整）[cite: 2, 4]。<br>
+                ✦ <strong>個人客製化營養菜單：</strong>評估個案營養與壓傷（褥瘡）風險，根據慢性病狀況客製化調配每日所需之均衡膳食菜單與配方[cite: 2, 4]。
             </p>
         </section>
     </div>
+
+    <footer>
+        <p><strong>愛馨居家護理所</strong></p>
+        <p>📍 機構地址：新北市新店區中央路 173-2 號 1 樓[cite: 1, 2, 3, 4]</p>
+        <p>💼 負責人：負責護理長 | 預定開業時間：2026 年 8 月[cite: 1]</p>
+        <div class="footer-meta">
+            <p>© 2026 愛馨居家護理所. All Rights Reserved. 醫療機構核准字號申請中。</p>
+            <p>本站採用 macOS Glassmorphism 沉浸式無邊框設計，用心守護，溫馨相伴。</p>
+        </div>
+    </footer>
+
 </body>
+</html>
