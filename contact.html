@@ -1,0 +1,50 @@
+<body>
+    <div class="container">
+        <header>
+            <span class="badge">歡迎洽詢預約</span>
+            <h1>聯絡與諮詢預約</h1>
+            <p>我們將有專人回覆您的居家護理、吞嚥復能與照護資格評估需求</p>
+        </header>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            
+            <section class="glass-card" style="margin-bottom: 0;">
+                <h2>聯絡方式</h2>
+                <p class="intro-text">
+                    愛馨居家護理所（籌備處）歡迎您的隨時來電或線上預約諮詢：
+                </p>
+                <p class="intro-text" style="line-height: 2;">
+                    🏢 <strong>機構名稱：</strong>愛馨居家護理所<br>
+                    📍 <strong>機構地址：</strong>新北市新店區中央路 173-2 號 1 樓<br>
+                    📞 <strong>籌備處電話：</strong>02-2218-XXXX<br>
+                    ⏳ <strong>服務時間：</strong>週一至週五 09:00 - 18:00<br>
+                    💼 <strong>預計正式開業：</strong>2026 年 8 月
+                </p>
+                <p class="intro-text" style="font-size: 0.95rem; color: var(--text-sub); border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 15px; margin-top: 15px;">
+                    * 註：若您或您的家人目前正處於「醫院出院準備階段」，請與醫院出院準備服務小組說明您欲介接「愛馨居家護理所」進行居家語言與吞嚥照護，我們能提供無縫的出院接軌服務。
+                </p>
+            </section>
+
+            <section class="glass-card" style="margin-bottom: 0;">
+                <h2>線上諮詢預約</h2>
+                <form onsubmit="alert('您的諮詢表單已成功送出！愛馨籌備處將於1個工作天內與您聯絡。'); return false;">
+                    <div class="form-group">
+                        <label class="form-label">聯絡人姓名</label>
+                        <input type="text" class="form-control" placeholder="請輸入您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">聯絡電話</label>
+                        <input type="tel" class="form-control" placeholder="請輸入您的聯絡電話" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">個案目前狀況與需求</label>
+                        <textarea class="form-control" rows="4" placeholder="請簡單說明個案狀況（如：留置管路、欲進行吞嚥訓練、CMS評估級數...）" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span>✉️</span> 送出預約諮詢
+                    </button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
